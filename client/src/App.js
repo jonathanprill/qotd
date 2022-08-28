@@ -3,8 +3,6 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import Header from './components/Header';
-import Navigation from './components/Navigation';
 import Landing from './pages/Landing';
 import Group from './pages/Group';
 import Dashboard from './pages/Dashboard';
@@ -39,8 +37,6 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <Navigation />
-        <Header />
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route path='/group' element={<Group />} />
