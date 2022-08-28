@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { SidebarData } from './SidebarData';
-import Hamburger from 'hamburger-react'
-
+import { Squash as Hamburger } from 'hamburger-react'
 
 
 export default function Navigation() {
@@ -13,9 +12,9 @@ export default function Navigation() {
 
     return (
         <>
-            <div style={{ position: 'absolute', top: '10px', left: '10px', zIndex: '100' }}>
+            <div style={{ position: 'absolute', top: '18px', left: '10px', zIndex: '100' }}>
                 <button onClick={showSidebar} style={{ border: 'none', backgroundColor: 'transparent', cursor: 'pointer', padding: '0' }}>
-                    <Hamburger />
+                    <Hamburger size={20} />
                 </button>
             </div>
 

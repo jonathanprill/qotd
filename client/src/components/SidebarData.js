@@ -3,20 +3,20 @@ import { FriendsIcon, GroupIcon, QuestionIcon } from './Icons';
 export const SidebarData = [
     {
         title: 'Groups',
-        path: '/groups',
+        path: '/group',
         icon: <GroupIcon />,
         cName: 'nav-text'
     },
     {
-        title: 'Questions',
-        path: '/questions',
-        icon: <QuestionIcon />,
+        title: 'Dashboard',
+        path: '/dashboard',
+        icon: <FriendsIcon />,
         cName: 'nav-text'
     },
     {
-        title: 'Friends',
-        path: '/friends',
-        icon: <FriendsIcon />,
+        title: 'Admin',
+        path: '/admin',
+        icon: <QuestionIcon />,
         cName: 'nav-text'
     }
 ];
