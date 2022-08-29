@@ -6,7 +6,7 @@ export default function Admin() {
         <>
             <Navigation />
             <Header />
-            <div style={{ width: '100vw', textAlign: 'center' }}>Admin page</div>
+            <div style={{ width: '100%', textAlign: 'center' }}>Admin page</div>
         </>
     )
 }

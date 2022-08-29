@@ -6,7 +6,7 @@ export default function Group() {
         <>
             <Navigation />
             <Header />
-            <div style={{ width: '100vw', textAlign: 'center' }}>Group page</div>
+            <div style={{ width: '100%', textAlign: 'center' }}>Group page</div>
         </>
     )
 }

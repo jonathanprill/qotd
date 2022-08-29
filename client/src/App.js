@@ -37,12 +37,14 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <Routes>
-          <Route path='/' element={<Landing />} />
-          <Route path='/group' element={<Group />} />
-          <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/admin' element={<Admin />} />
-        </Routes>
+        <div className='test'>
+          <Routes>
+            <Route path='/' element={<Landing />} />
+            <Route path='/group' element={<Group />} />
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/admin' element={<Admin />} />
+          </Routes>
+        </div>
       </Router>
     </ApolloProvider>
 

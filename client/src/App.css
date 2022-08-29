@@ -47,3 +47,14 @@
   background-color: var(--mint-green);
   color: var(--blue-gray);
 }
+
+@media only screen and (min-width: 500px) {
+  .test {
+    border: 16px solid black;
+    margin: auto;
+    height: 90vh;
+    aspect-ratio: 9/19.5;
+    border-radius: 30px;
+    margin-top: 12px;
+  }
+}

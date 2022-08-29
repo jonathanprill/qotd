@@ -6,7 +6,7 @@ export default function Landing() {
         <>
             <Navigation />
             <Header />
-            <div style={{ width: '100vw', textAlign: 'center' }}>Landing page</div>
+            <div style={{ width: '100%', textAlign: 'center' }}>Landing page</div>
         </>
     )
 }

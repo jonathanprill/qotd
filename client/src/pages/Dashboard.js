@@ -6,7 +6,7 @@ export default function Dashboard() {
         <>
             <Navigation />
             <Header />
-            <div style={{ width: '100vw', textAlign: 'center' }}>Dashboard page</div>
+            <div style={{ width: '100%', textAlign: 'center' }}>Dashboard page</div>
         </>
     )
 }

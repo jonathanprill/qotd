@@ -12,7 +12,7 @@ export default function Navigation() {
 
     return (
         <>
-            <div style={{ position: 'absolute', top: '18px', left: '10px', zIndex: '100' }}>
+            <div style={{position: 'relative', textAlign: 'left', zIndex: '100' }}>
                 <button onClick={showSidebar} style={{ border: 'none', backgroundColor: 'transparent', cursor: 'pointer', padding: '0' }}>
                     <Hamburger size={20} />
                 </button>
