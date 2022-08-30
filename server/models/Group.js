@@ -9,6 +9,10 @@ const groupSchema = new Schema(
       minlength: 1,
       maxlength: 50
     },
+    groupColor: {
+      type: String,
+      default: '#' + Math.random().toString(16).substr(-6),
+    },
     members: [
       {
         type: Schema.Types.ObjectId,
