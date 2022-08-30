@@ -10,39 +10,44 @@ const typeDefs = gql`
     username: String
     email: String
     friendCount: Int
-    thoughts: [Thought]
+    groups: [Group]
     friends: [User]
   }
 
-  type Thought {
+  type Group {
     _id: ID
-    thoughtText: String
-    createdAt: String
-    username: String
-    reactionCount: Int
-    reactions: [Reaction]
+    groupName: String
+    groupColor: String
+    members: [User]
+    question: [Question]
   }
 
-  type Reaction {
+  type Question {
     _id: ID
-    reactionBody: String
-    createdAt: String
+    questionText: String
+    answers: [Answer]
+  }
+
+  type Answer {
+    _id: ID
+    answerBody: String
     username: String
+    groupName: String
+    createdAt: String
   }
 
   type Query {
     me: User
     users: [User]
     user(username: String!): User
-    thoughts(username: String): [Thought]
-    thought(_id: ID!): Thought
+    groups(username: String): [Group]
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addThought(thoughtText: String!): Thought
-    addReaction(thoughtId: ID!, reactionBody: String!): Thought
+    addGroup(groupName: String!): Group
+    addAnswer(questionId: ID!, answerBody: String!): Group
     addFriend(friendId: ID!): User
   }
 
