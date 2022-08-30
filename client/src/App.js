@@ -37,7 +37,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className='test'>
+        <div className='phone-container'>
           <Routes>
             <Route path='/' element={<Landing />} />
             <Route path='/group' element={<Group />} />
