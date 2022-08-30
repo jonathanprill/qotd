@@ -6,8 +6,8 @@ const groupSchema = new Schema(
     groupName: {
       type: String,
       required: 'You need to have a Group Name!',
-      minlength: 1,
-      maxlength: 50
+      unique: true,
+      trim: true
     },
     groupColor: {
       type: String,
