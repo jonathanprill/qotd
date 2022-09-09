@@ -23,5 +23,9 @@
   "homepage": "https://github.com/jonathanprill/deep-thoughts#readme",
   "devDependencies": {
     "concurrently": "^7.1.0"
+  },
+  "dependencies": {
+    "boostrap": "^2.0.0",
+    "react-bootstrap": "^2.5.0"
   }
 }

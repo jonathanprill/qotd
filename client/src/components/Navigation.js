@@ -17,6 +17,7 @@ export default function Navigation() {
                     <Hamburger size={20} />
                 </button>
             </div>
+            
 
             <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                 <ul className='nav-menu-items' >
