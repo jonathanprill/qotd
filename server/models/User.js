@@ -1,6 +1,5 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const answerSchema = require('./answer');
 
 
 const userSchema = new Schema(
@@ -34,7 +33,12 @@ const userSchema = new Schema(
         ref: 'User'
       }
     ],
-    answers: [answerSchema]
+    answers: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Answer'
+      }
+    ],
   },
   {
     toJSON: {

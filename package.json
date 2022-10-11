@@ -25,7 +25,9 @@
     "concurrently": "^7.1.0"
   },
   "dependencies": {
+    "apollo-server": "^3.10.3",
     "boostrap": "^2.0.0",
+    "graphql": "^16.6.0",
     "react-bootstrap": "^2.5.0"
   }
 }

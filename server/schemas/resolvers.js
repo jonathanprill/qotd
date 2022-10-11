@@ -1,4 +1,4 @@
-const { User, Group, Question } = require('../models');
+const { User, Group, Question, Answer } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -70,7 +70,12 @@ const resolvers = {
         addGroup: async (parent, args, context) => {
             if (context.user) {
                 const group = await Group.create({ ...args });
-
+                
+                await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { groups: group._id} },
+                    { new: true }
+                );
                 return group;
             }
 
