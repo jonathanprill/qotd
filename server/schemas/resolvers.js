@@ -10,26 +10,29 @@ const resolvers = {
                 const userData = await User.findOne({ _id: context.user._id })
                     .select('-__v -password')
                     .populate('groups')
-                    .populate('friends');
+                    .populate('friends')
+                    .populate('answers');
 
                 return userData;
             }
 
             throw new AuthenticationError('Not logged in');
         },
-        groups: async (parent, { groupName }) => {
-            const params = groupName ? { groupName } : {};
+        // Get all groups
+        groups: async (parent, { username }) => {
+            const params = username ? { username } : {};
             return Group.find(params).sort({ createdAt: -1 });
         },
-        // Get Single Group
-        groups: async (parent, { groupName }) => {
-            return Group.findOne({ groupName });
+        // Get single group
+        group: async (parent, { _id }) => {
+            return Group.findOne({ _id });
         },
         // get all users
         users: async () => {
             return User.find()
                 .select('-__v -password')
                 .populate('friends')
+                .populate('answers')
                 .populate('groups');
         },
         // get a user by username
@@ -37,6 +40,7 @@ const resolvers = {
             return User.findOne({ username })
                 .select('-__v -password')
                 .populate('friends')
+                .populate('answers')
                 .populate('groups');
         }
 
@@ -72,15 +76,17 @@ const resolvers = {
 
             throw new AuthenticationError('You need to be logged in!');
         },
-        addAnswer: async (parent, { questionId, answerBody }, context) => {
+        addAnswer: async (parent, args, context) => {
             if (context.user) {
-                const updatedQuestion = await Question.findOneAndUpdate(
-                    { _id: questionId },
-                    { $push: { answers: { answerBody, username: context.user.username } } },
-                    { new: true, runValidators: true }
+                const answer = await Answer.create({ ...args, username: context.user.username });
+                
+                await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { answers: answer._id} },
+                    { new: true }
                 );
-
-                return updatedQuestion;
+                
+                return answer;
             }
 
             throw new AuthenticationError('You need to be logged in!');
