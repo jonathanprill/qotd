@@ -1,4 +1,4 @@
-const { Schema } = require('mongoose');
+const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const answerSchema = new Schema(
@@ -9,10 +9,6 @@ const answerSchema = new Schema(
       maxlength: 280
     },
     username: {
-      type: String,
-      required: true
-    },
-    groupName: {
       type: String,
       required: true
     },
@@ -29,4 +25,6 @@ const answerSchema = new Schema(
   }
 );
 
-module.exports = answerSchema;
+const Answer = model('Answer', answerSchema);
+
+module.exports = Answer;

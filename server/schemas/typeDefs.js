@@ -12,6 +12,7 @@ const typeDefs = gql`
     friendCount: Int
     groups: [Group]
     friends: [User]
+    answers: [Answer]
   }
 
   type Group {
@@ -19,20 +20,17 @@ const typeDefs = gql`
     groupName: String
     groupColor: String
     members: [User]
-    question: [Question]
   }
 
   type Question {
     _id: ID
     questionText: String
-    answers: [Answer]
   }
 
   type Answer {
     _id: ID
     answerBody: String
     username: String
-    groupName: String
     createdAt: String
   }
 
@@ -40,15 +38,22 @@ const typeDefs = gql`
     me: User
     users: [User]
     user(username: String!): User
-    groups(username: String): [Group]
+    group(groupName: String): Group
+    groups: [Group]
+    answer(_id: ID): Answer
+    answers(username: String): [Answer]
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addGroup(groupName: String!): Group
-    addAnswer(questionId: ID!, answerBody: String!): Group
+    addAnswer(answerBody: String!): Answer
     addFriend(friendId: ID!): User
+    addMember(groupId: ID!): Group
+    removeMember(userId: ID!, groupId: ID!): Group
+    deleteAnswer(_id: ID!): Answer
+    deleteGroup(_id: ID!): Group
   }
 
   type Auth {

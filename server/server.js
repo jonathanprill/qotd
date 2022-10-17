@@ -3,7 +3,11 @@ const path = require('path');
 const { authMiddleware } = require('./utils/auth');
 const express = require('express');
 // import ApolloServer
-const { ApolloServer } = require('apollo-server-express');
+const { ApolloServer, gql } = require('apollo-server-express');
+const {
+  ApolloServerPluginLandingPageGraphQLPlayground,
+  ApolloServerPluginLandingPageDisabled
+} = require('apollo-server-core');
 
 // import our typeDefs and resolvers
 const { typeDefs, resolvers } = require('./schemas');
@@ -19,12 +23,13 @@ const {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: authMiddleware,
+  csrfPrevention: true,
   plugins: [
     process.env.NODE_ENV === 'production'
       ? ApolloServerPluginLandingPageDisabled()
       : ApolloServerPluginLandingPageGraphQLPlayground(),
   ],
+  context: authMiddleware
 });
 
 const app = express();

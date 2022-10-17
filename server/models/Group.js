@@ -11,7 +11,6 @@ const groupSchema = new Schema(
     },
     groupColor: {
       type: String,
-      default: '#' + Math.random().toString(16).substr(-6),
     },
     members: [
       {
@@ -19,12 +18,11 @@ const groupSchema = new Schema(
         ref: 'User'
       }
     ],
-    question: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Question'
-      }
-    ]
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: timestamp => dateFormat(timestamp)
+    }
   },
   {
     toJSON: {
@@ -35,6 +33,6 @@ const groupSchema = new Schema(
 
 
 
-const Group = model('group', groupSchema);
+const Group = model('Group', groupSchema);
 
 module.exports = Group;

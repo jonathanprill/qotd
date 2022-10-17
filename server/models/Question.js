@@ -9,7 +9,11 @@ const questionSchema = new Schema(
       minlength: 1,
       maxlength: 280
     },
-    answers: [answerSchema]
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: timestamp => dateFormat(timestamp)
+    }
   },
   {
     toJSON: {
