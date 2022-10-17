@@ -67,16 +67,23 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        addGroup: async (parent, args, context) => {
+        addGroup: async (parent, args , context) => {
             if (context.user) {
-                const group = await Group.create({ ...args });
+                const group = await Group.create({ ...args});
                 
                 await User.findByIdAndUpdate(
                     { _id: context.user._id },
                     { $push: { groups: group._id} },
                     { new: true }
+                );   
+                console.log(args)
+                const updatedGroup = await Group.findOneAndUpdate(
+                    { groupName: args.groupName },
+                    { $addToSet: { members: {_id: context.user._id, username: context.user.username, email: context.user.email}}},
+                    { new: true }
                 );
-                return group;
+
+                return {group, updatedGroup};
             }
 
             throw new AuthenticationError('You need to be logged in!');
