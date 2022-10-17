@@ -21,11 +21,13 @@ const resolvers = {
         // Get all groups
         groups: async (parent, { username }) => {
             const params = username ? { username } : {};
-            return Group.find(params).sort({ createdAt: -1 });
+            return Group.find(params).sort({ createdAt: -1 })
+            .populate('members');
         },
         // Get single group
-        group: async (parent, { _id }) => {
-            return Group.findOne({ _id });
+        group: async (parent, { groupName }) => {
+            return Group.findOne({ groupName })
+                .populate('members');
         },
         // get all users
         users: async () => {
@@ -67,13 +69,18 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        addGroup: async (parent, args, context) => {
+        addGroup: async (parent, { groupName }, context) => {
             if (context.user) {
-                const group = await Group.create({ ...args });
-                
+                const group = await Group.create({ groupName });
+
                 await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $push: { groups: group._id} },
+                    { $push: { groups: group._id } },
+                    { new: true }
+                )
+                await Group.findOneAndUpdate(
+                    { groupName: groupName },
+                    { $push: { members: context.user._id } },
                     { new: true }
                 );
                 return group;
@@ -81,16 +88,34 @@ const resolvers = {
 
             throw new AuthenticationError('You need to be logged in!');
         },
+        addMember: async (parent, { groupId }, context) => {
+            if (context.user) {
+                const updatedGroup = await Group.findOneAndUpdate(
+                    { _id: groupId },
+                    { $addToSet: { members: context.user._id } },
+                    { new: true }
+                ).populate('members');
+                await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $addToSet: { groups: groupId } },
+                    { new: true }
+                ).populate('groups');
+
+                return updatedGroup;
+            }
+
+            throw new AuthenticationError('You need to be logged in!');
+        },
         addAnswer: async (parent, args, context) => {
             if (context.user) {
                 const answer = await Answer.create({ ...args, username: context.user.username });
-                
+
                 await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $push: { answers: answer._id} },
+                    { $push: { answers: answer._id } },
                     { new: true }
                 );
-                
+
                 return answer;
             }
 
@@ -108,6 +133,64 @@ const resolvers = {
             }
 
             throw new AuthenticationError('You need to be logged in!');
+        },
+        deleteAnswer: async (parent, { _id }, context) => {
+            if (!context.user) return notLoggedIn();
+
+            try {
+                const answer = await Answer.findOne({ _id });
+                const user = await User.updateOne(
+                    { username: answer.username },
+                    { $pull: { answers: { _id } } },
+                    { new: true }
+                );
+                await answer.remove();
+                return user;
+
+            } catch (error) {
+                console.log(error);
+                return Promise.reject(error);
+            }
+        },
+        deleteGroup: async (parent, { _id }, context) => {
+            if (!context.user) return notLoggedIn();
+
+            try {
+                const group = await Group.findOne({ _id });
+                const user = await User.updateOne(
+                    { username: group.username },
+                    { $pull: { groups: { _id } } },
+                    { new: true }
+                );
+                await group.remove();
+                return user;
+                
+            } catch (error) {
+                console.log(error);
+                return Promise.reject(error);
+            }
+        },
+        removeMember: async (parent, { userId, groupId }, context) => {
+            if (!context.user) return notLoggedIn();
+
+            try {
+                const group = await Group.updateOne(
+                    { _id: groupId },
+                    { $pull: { members: { userId } } },
+                    { new: true }
+                )
+                await User.findByIdAndUpdate(
+                    { _id: userId },
+                    { $pull: { groups: { groupId } } },
+                    { new: true }
+                );
+                return group;
+                
+                
+            } catch (error) {
+                console.log(error);
+                return Promise.reject(error);
+            }
         }
     }
 };
