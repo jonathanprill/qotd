@@ -174,17 +174,19 @@ const resolvers = {
             if (!context.user) return notLoggedIn();
 
             try {
-                const group = await Group.updateOne(
+                const group = await Group.findOneAndUpdate(
                     { _id: groupId },
-                    { $pull: { members: { userId } } },
+                    { $pull: { members: userId } },
                     { new: true }
                 )
-                await User.findByIdAndUpdate(
+                await User.findOneAndUpdate(
                     { _id: userId },
-                    { $pull: { groups: { groupId } } },
+                    { $pull: { groups: groupId } },
                     { new: true }
                 );
+                
                 return group;
+
                 
                 
             } catch (error) {
