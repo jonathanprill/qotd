@@ -39,7 +39,7 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     group(groupName: String): Group
-    groups(username: String): [Group]
+    groups: [Group]
     answer(_id: ID): Answer
     answers(username: String): [Answer]
   }
@@ -50,7 +50,10 @@ const typeDefs = gql`
     addGroup(groupName: String!): Group
     addAnswer(answerBody: String!): Answer
     addFriend(friendId: ID!): User
-    addMember(group_id: ID, user_id: ID): User
+    addMember(groupId: ID!): Group
+    removeMember(userId: ID!, groupId: ID!): Group
+    deleteAnswer(_id: ID!): Answer
+    deleteGroup(_id: ID!): Group
   }
 
   type Auth {
