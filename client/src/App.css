@@ -44,6 +44,10 @@
   border-radius: 4px;
 }
 
+.sign-in {
+  font-size: 100px;
+}
+
 .nav-text a:hover {
   background-color: var(--mint-green);
   color: var(--blue-gray);

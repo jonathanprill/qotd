@@ -1,5 +1,5 @@
 {
-  "name": "mern-social-media",
+  "name": "qotd",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jonathanprill/deep-thoughts.git"
+    "url": "git+https://github.com/jonathanprill/qotd.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jonathanprill/deep-thoughts/issues"
+    "url": "https://github.com/jonathanprill/qotd/issues"
   },
-  "homepage": "https://github.com/jonathanprill/deep-thoughts#readme",
+  "homepage": "https://github.com/jonathanprill/qotd#readme",
   "devDependencies": {
     "concurrently": "^7.1.0"
   },

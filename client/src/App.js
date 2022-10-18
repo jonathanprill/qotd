@@ -7,6 +7,8 @@ import Landing from './pages/Landing';
 import Group from './pages/Group';
 import Dashboard from './pages/Dashboard';
 import Admin from './pages/Admin';
+import Signup from './pages/Signup'
+import Login from './pages/Login'
 
 // Apollo Client Start
 const httpLink = createHttpLink({
@@ -43,6 +45,8 @@ function App() {
             <Route path='/group' element={<Group />} />
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/admin' element={<Admin />} />
+            <Route path='/signup' element={<Signup />} />
+            <Route path='/login' element={<Login />} />
           </Routes>
         </div>
       </Router>
