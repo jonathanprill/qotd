@@ -31,6 +31,10 @@ export const QUERY_ME = gql`
         _id
         username
       }
+      groups{
+        _id
+        groupName
+      }
     }
   }
 `;
@@ -45,4 +49,30 @@ export const QUERY_ANSWERS = gql`
       username
     }
   }
+`;
+
+// Query Groups
+export const QUERY_GROUPS = gql`
+{
+  groups {
+    _id
+    groupName
+  }
+}
+`;
+
+// Query Single Group
+export const QUERY_GROUP = gql`
+query group($groupName: String!) {
+  group(groupName: $groupName) {
+    _id
+    createdAt
+    groupColor
+    groupName
+    members{
+      _id
+      username
+    }
+  }
+}
 `;

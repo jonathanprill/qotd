@@ -4,11 +4,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import Landing from './pages/Landing';
-import Group from './pages/Group';
+import Groups from './pages/Groups';
 import Dashboard from './pages/Dashboard';
 import Admin from './pages/Admin';
 import Signup from './pages/Signup'
 import Login from './pages/Login'
+import SingleGroup from './pages/SingleGroup'
 
 // Apollo Client Start
 const httpLink = createHttpLink({
@@ -42,11 +43,15 @@ function App() {
         <div className='phone-container'>
           <Routes>
             <Route path='/' element={<Landing />} />
-            <Route path='/group' element={<Group />} />
+            <Route path='/groups' element={<Groups />} />
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/admin' element={<Admin />} />
             <Route path='/signup' element={<Signup />} />
             <Route path='/login' element={<Login />} />
+            <Route
+                path="/group/:groupName"
+                element={<SingleGroup />}
+              />
           </Routes>
         </div>
       </Router>

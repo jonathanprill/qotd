@@ -20,6 +20,7 @@ const typeDefs = gql`
     groupName: String
     groupColor: String
     members: [User]
+    createdAt: String
   }
 
   type Question {

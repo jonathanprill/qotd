@@ -3,7 +3,7 @@ import { FriendsIcon, GroupIcon, QuestionIcon } from './Icons';
 export const SidebarData = [
     {
         title: 'Groups',
-        path: '/group',
+        path: '/groups',
         icon: <GroupIcon />,
         cName: 'nav-text'
     },
