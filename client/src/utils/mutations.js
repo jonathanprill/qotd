@@ -41,34 +41,14 @@ export const ADD_FRIEND = gql`
   }
 `;
 
-// Add Thought
-export const ADD_THOUGHT = gql`
-  mutation addThought($thoughtText: String!) {
-    addThought(thoughtText: $thoughtText) {
+// Add Answer
+export const ADD_ANSWER = gql`
+  mutation addAnswer($answerBody: String!) {
+    addAnswer(answerBody: $answerBody) {
       _id
-      thoughtText
+      answerBody
       createdAt
       username
-      reactionCount
-      reactions {
-        _id
-      }
-    }
-  }
-`;
-
-// Add Reaction
-export const ADD_REACTION = gql`
-  mutation addReaction($thoughtId: ID!, $reactionBody: String!) {
-    addReaction(thoughtId: $thoughtId, reactionBody: $reactionBody) {
-      _id
-      reactionCount
-      reactions {
-        _id
-        reactionBody
-        createdAt
-        username
-      }
     }
   }
 `;

@@ -4,7 +4,7 @@ import { gql } from '@apollo/client';
 
 
 
-//For the Profile Page
+// For the Profile Page
 export const QUERY_USER = gql`
   query user($username: String!) {
     user(username: $username) {
@@ -35,18 +35,14 @@ export const QUERY_ME = gql`
   }
 `;
 
-// retrieve some data related to the logged-in user
-export const QUERY_ME_BASIC = gql`
-  {
-    me {
+// Query Answers
+export const QUERY_ANSWERS = gql`
+  query answers($username: String) {
+    answers(username: $username) {
       _id
+      answerBody
+      createdAt
       username
-      email
-      friendCount
-      friends {
-        _id
-        username
-      }
     }
   }
 `;

@@ -53,6 +53,16 @@
   color: var(--blue-gray);
 }
 
+
+
+.text-error {
+  color: red;
+}
+
+
+
+
+/* Phone Body on Desktop */
 @media only screen and (min-width: 500px) {
   .phone-container {
     border-top: 25px solid black;

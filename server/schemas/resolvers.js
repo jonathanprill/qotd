@@ -44,6 +44,10 @@ const resolvers = {
                 .populate('friends')
                 .populate('answers')
                 .populate('groups');
+        },
+        answers: async (parent, { username }) => {
+            const params = username ? { username } : {};
+            return Answer.find(params).sort({ createdAt: -1 });
         }
 
     },
