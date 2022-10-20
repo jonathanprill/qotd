@@ -6,6 +6,7 @@ import { setContext } from '@apollo/client/link/context';
 import Landing from './pages/Landing';
 import Groups from './pages/Groups';
 import Profile from './pages/Profile';
+import Loading from './components/Loading';
 import Admin from './pages/Admin';
 import Signup from './pages/Signup'
 import Login from './pages/Login'
@@ -44,6 +45,7 @@ function App() {
         <div className='phone-container'>
           <Routes>
             <Route path='/' element={<Landing />} />
+            <Route path='/loading' element={<Loading />} />
             <Route path='/groups' element={<Groups />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/admin' element={<Admin />} />

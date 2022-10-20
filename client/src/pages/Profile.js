@@ -1,6 +1,7 @@
 import Navigation from "../components/Navigation"
 import Header from "../components/Header"
 import MyGroupList from "../components/MyGroupList"
+import Loading from '../components/Loading';
 import Answers from "../components/Answers";
 import { Navigate, useParams } from 'react-router-dom';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
@@ -8,6 +9,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 
 export default function Profile() {
+
 
     const { username: userParam } = useParams();
     const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -19,10 +21,11 @@ export default function Profile() {
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
         return <Navigate to="/profile" />;
     }
-    // if Loading display this:
+
     if (loading) {
-        return <div>Loading...</div>;
+        return <Loading />;
     }
+
     // What happens if you navigate to /profile and you aren't logged in?
     if (!user?.username) {
         return (
@@ -42,9 +45,9 @@ export default function Profile() {
                 groups={user.groups}
                 username={user.username}
             />
-            <Answers 
+            <Answers
                 answers={user.answers}
             />
         </>
     )
-}
+};

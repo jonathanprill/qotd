@@ -17,8 +17,6 @@ export default function Question() {
         }
     };
 
-
-
     //updated handleFormSubmit() to use the addAnswer() mutation
     const handleFormSubmit = async event => {
         event.preventDefault();
