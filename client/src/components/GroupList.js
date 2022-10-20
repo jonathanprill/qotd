@@ -14,7 +14,7 @@ const GroupList = ({ allgroups }) => {
             </h5>
             {allgroups.map(group => (
                 <button className="btn w-100 display-block mb-2" key={group._id}>
-                    <Link to={`/profile/${group.groupName}`}>{group.groupName}</Link>
+                    <Link to={`/group/${group.groupName}`}>{group.groupName}</Link>
                 </button>
             ))}
         </div>

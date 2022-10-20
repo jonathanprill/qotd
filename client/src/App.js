@@ -5,10 +5,11 @@ import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@ap
 import { setContext } from '@apollo/client/link/context';
 import Landing from './pages/Landing';
 import Groups from './pages/Groups';
-import Dashboard from './pages/Dashboard';
+import Profile from './pages/Profile';
 import Admin from './pages/Admin';
 import Signup from './pages/Signup'
 import Login from './pages/Login'
+import NoMatch from './pages/NoMatch'
 import SingleGroup from './pages/SingleGroup'
 
 // Apollo Client Start
@@ -44,13 +45,15 @@ function App() {
           <Routes>
             <Route path='/' element={<Landing />} />
             <Route path='/groups' element={<Groups />} />
-            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/profile' element={<Profile />} />
             <Route path='/admin' element={<Admin />} />
             <Route path='/signup' element={<Signup />} />
             <Route path='/login' element={<Login />} />
+            <Route path="/group/:groupName" element={<SingleGroup />} />
+            <Route path="/profile/:username" element={<Profile />} />
             <Route
-                path="/group/:groupName"
-                element={<SingleGroup />}
+                path="*"
+                element={<NoMatch />}
               />
           </Routes>
         </div>

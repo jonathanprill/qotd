@@ -15,7 +15,14 @@ export const QUERY_USER = gql`
         _id
         username
       }
-      
+      groups {
+        _id
+        groupName
+      }
+      answers {
+        _id
+        answerBody
+      }
     }
   }
 `;
@@ -34,6 +41,10 @@ export const QUERY_ME = gql`
       groups{
         _id
         groupName
+      }
+      answers {
+        _id
+        answerBody
       }
     }
   }

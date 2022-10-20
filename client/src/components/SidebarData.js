@@ -1,4 +1,4 @@
-import { FriendsIcon, GroupIcon, QuestionIcon } from './Icons';
+import { ProfileIcon, GroupIcon, QuestionIcon } from './Icons';
 
 export const SidebarData = [
     {
@@ -8,9 +8,9 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Dashboard',
-        path: '/dashboard',
-        icon: <FriendsIcon />,
+        title: 'Profile',
+        path: '/profile',
+        icon: <ProfileIcon />,
         cName: 'nav-text'
     },
     {

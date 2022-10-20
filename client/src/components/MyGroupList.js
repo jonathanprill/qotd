@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const MyGroupList = ({ groups, username }) => {
+const MyGroupList = ({ groups }) => {
 
     if (!groups || !groups.length) {
         return <p>No Groups Yet</p>;

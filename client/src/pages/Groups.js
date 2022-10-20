@@ -1,6 +1,5 @@
 import Navigation from "../components/Navigation"
 import Header from "../components/Header"
-import Answers from "../components/Answers"
 import MyGroupList from "../components/MyGroupList"
 import GroupList from "../components/GroupList"
 
@@ -23,11 +22,9 @@ export default function Groups() {
         <>
             <Navigation />
             <Header />
-            <Answers />
             <div style={{ width: '100%', textAlign: 'center', fontSize: '30px' }}>Group page</div>
             <MyGroupList
                 groups={user.groups}
-                username={user.username}
             />
             <GroupList
                 allgroups={groupData.groups}

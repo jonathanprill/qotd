@@ -41,15 +41,14 @@ export default function Navigation() {
                     <li>
                         {Auth.loggedIn() ? (
                             <>
-                                <Link to="/profile">Me</Link>
-                                <a href="/" onClick={logout}>
+                                <a href="/" onClick={logout} style={{textDecoration: 'none', padding: '20px'}}>
                                     Logout
                                 </a>
                             </>
                         ) : (
                             <>
-                                <Link to="/login">Login</Link>
-                                <Link to="/signup">Signup</Link>
+                                <Link to="/login" style={{textDecoration: 'none', padding: '10px'}}>Login</Link>
+                                <Link to="/signup" style={{textDecoration: 'none', padding: '10px'}}>Signup</Link>
                             </>
                         )}
                     </li>
