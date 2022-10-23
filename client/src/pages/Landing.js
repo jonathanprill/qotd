@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Navigation from "../components/Navigation"
 import Header from "../components/Header"
 import Question from "../components/Question"
-import Loading from "../components/Loading"
+import Logo from "../components/Logo"
 
 export default function Landing() {
     // if Loading display this:
@@ -10,11 +10,11 @@ export default function Landing() {
     if (true) {
         setTimeout(() => {
             setIsLoading(false)
-        }, 3000);
+        }, 4000);
     };
-    
+
     if (isLoading) {
-        return <Loading />;
+        return <Logo />;
     }
 
     return (

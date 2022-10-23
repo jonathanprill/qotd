@@ -1,3 +1,7 @@
+// This Component was reaplced by Logo.js !!!
+// This Component was reaplced by Logo.js !!!
+// This Component was reaplced by Logo.js !!!
+// This Component was reaplced by Logo.js !!!
 import { useState, useEffect } from 'react';
 
 function Loading() {

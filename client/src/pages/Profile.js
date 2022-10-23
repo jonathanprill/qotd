@@ -1,7 +1,7 @@
 import Navigation from "../components/Navigation"
 import Header from "../components/Header"
 import MyGroupList from "../components/MyGroupList"
-import Loading from '../components/Loading';
+import Logo from '../components/Logo';
 import Answers from "../components/Answers";
 import { Navigate, useParams } from 'react-router-dom';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
@@ -23,7 +23,7 @@ export default function Profile() {
     }
 
     if (loading) {
-        return <Loading />;
+        return <Logo />;
     }
 
     // What happens if you navigate to /profile and you aren't logged in?
