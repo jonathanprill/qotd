@@ -44,7 +44,7 @@ export default function Question() {
         <div className="container text-center" style={{ marginTop: '35%' }}>
             <div className="row align-items-center">
                 <div className="col-10 offset-1">
-                    <h1 style={{ color: 'black', textDecoration: 'none', fontFamily: 'Libre Baskerville', fontSize: '28px' }}>
+                    <h1>
                         Who is your favorite comedic television character?
                     </h1>
 

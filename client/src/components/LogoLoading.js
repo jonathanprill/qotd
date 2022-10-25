@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useTransition, animated } from 'react-spring';
 
-function Logo() {
+function LogoLoading() {
 
     const [items, setItems] = useState([])
     //REACT SPRING
     const transition = useTransition(items, {
-        from: { x: 1, y: 1, width: 48, height: 48, borderRadius: 50, borderBottomLeftRadius: 50, borderTopRightRadius: 50, borderBottomRightRadius: 50, delay: 1000, rotate: 0, backgroundColor: 'rgb(241, 91, 181)' }, //start
+        from: { x: 25, y: 25, width: 48, height: 48, borderRadius: 50, borderBottomLeftRadius: 50, borderTopRightRadius: 50, borderBottomRightRadius: 50, delay: 1000, rotate: 0, backgroundColor: 'rgb(0, 0, 0)' }, //start
         enter: item => async (next) => {
             await next({ x: item.left, y: item.top, height: item.height, width: item.width, borderRadius: item.borderRadius, borderBottomLeftRadius: item.borderBottomLeftRadius, borderBottomRightRadius: item.borderBottomRightRadius, delay: 10, rotate: item.rotate, backgroundColor: item.backgroundColor, borderTopRightRadius: item.borderTopRightRadius }); //start
             await next({ x: item.left3, y: item.top3, height: item.height3, width: item.width3, borderRadius: item.borderRadius3, borderBottomLeftRadius: item.borderBottomLeftRadius3, borderBottomRightRadius: item.borderBottomRightRadius3, delay: 500,rotate: item.rotate3, backgroundColor: item.backgroundColor3, borderTopRightRadius: item.borderTopRightRadius3 }); //three
@@ -78,7 +78,7 @@ function Logo() {
                 left1: 75, top1: 75, height1: 25, width1: 25, borderRadius1: 0, borderBottomLeftRadius1: 0, borderTopRightRadius1: 0, borderBottomRightRadius1: 0, rotate1: 0, backgroundColor1: 'rgb(0, 245, 212)',  // one
                 left2: 75, top2: 75, width2: 25, height2: 25, borderRadius2: 0, borderBottomLeftRadius2: 0, borderTopRightRadius2: 25, borderBottomRightRadius2: 0, rotate2: 0, backgroundColor2: 'rgb(0, 245, 212)', // two
                 left3: 75, top3: 75, width3: 25, height3: 25, borderRadius3: 25, borderBottomLeftRadius3: 25, borderTopRightRadius3: 25, borderBottomRightRadius3: 25, rotate3: 0, backgroundColor3: 'rgb(0, 245, 212)', // three
-                left4: -400, top4: -400, width4: 1000, height4: 1000, borderRadius4: 50, borderBottomLeftRadius4: 50, borderTopRightRadius4: 50, borderBottomRightRadius4: 50, rotate4: 0, backgroundColor4: 'rgb(255, 255, 255)', // 4
+                left4: -400, top4: -500, width4: 800, height4: 1000, borderRadius4: 50, borderBottomLeftRadius4: 50, borderTopRightRadius4: 50, borderBottomRightRadius4: 50, rotate4: 0, backgroundColor4: 'rgb(0, 0, 0)', // 4
             }
         ])
     }, []);
@@ -107,4 +107,4 @@ function Logo() {
     );
 }
 
-export default Logo;
+export default LogoLoading;

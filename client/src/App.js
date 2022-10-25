@@ -9,6 +9,7 @@ import Profile from './pages/Profile';
 import Admin from './pages/Admin';
 import Signup from './pages/Signup'
 import Login from './pages/Login'
+import Footer from './components/Footer';
 import NoMatch from './pages/NoMatch'
 import SingleGroup from './pages/SingleGroup'
 
@@ -41,7 +42,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className='phone-container'>
+        <div className='content'>
           <Routes>
             <Route path='/' element={<Landing />} />
             <Route path='/groups' element={<Groups />} />
@@ -52,11 +53,12 @@ function App() {
             <Route path="/group/:groupName" element={<SingleGroup />} />
             <Route path="/profile/:username" element={<Profile />} />
             <Route
-                path="*"
-                element={<NoMatch />}
-              />
+              path="*"
+              element={<NoMatch />}
+            />
           </Routes>
         </div>
+        <Footer />
       </Router>
     </ApolloProvider>
 
